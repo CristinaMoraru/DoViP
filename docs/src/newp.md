@@ -1,3 +1,0 @@
-newp
-djaksh
-giasdJ

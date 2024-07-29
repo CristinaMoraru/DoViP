@@ -11,7 +11,10 @@ makedocs(;
     ),
     pages=[
         "Home" => "index.md",
-        "Tell" => "tell.md", 
-        "Newpage" => "newp.md"
+        "Installation" => [
+             "Overview" => "Installation.md", 
+             "Dependencies" => "installation_conda_dependencies.md",
+             "DoViP environment" => "installation_DoViP_env.md"], 
+        "Running" => "Running.md"
     ],
 )
