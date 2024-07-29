@@ -1,0 +1,1 @@
+DoViP () { julia "/home/cmoraru/MY_SPACE/DoViP_App_atcp_test/conda_julia/DoViP_App.jl/src/DoViP_App.jl" "$@"; }
