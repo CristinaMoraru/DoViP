@@ -28,6 +28,8 @@ ln -s /path/toward/conda_DoViP/julia-1.10.0/bin/julia /path/toward/conda_DoViP/b
 cd /path/toward/conda_DoViP
 git clone https://github.com/CristinaMoraru/DoViP.git
 
+mv DoViP/* .
+
 # give permissions to the folder where julia saved its libraries
 cd share
 chmod 777 -R julia
