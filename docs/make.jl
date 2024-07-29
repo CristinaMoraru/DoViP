@@ -11,6 +11,7 @@ makedocs(;
     ),
     pages=[
         "Home" => "index.md",
-        "Tell" => "tell.md"
+        "Tell" => "tell.md", 
+        "Newpage" => "newp.md"
     ],
 )
