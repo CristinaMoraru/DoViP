@@ -1,7 +1,4 @@
-#using DoViP_App
 using Documenter
-
-#DocMeta.setdocmeta!(DoViP_App, :DocTestSetup, :(using DoViP_App); recursive=true)
 
 makedocs(;
     #modules=[DoViP_App],
@@ -10,9 +7,10 @@ makedocs(;
     format=Documenter.HTML(;
         edit_link="main",
         assets=String[],
+        inventory_version="0.1.0"
     ),
     pages=[
         "Home" => "index.md",
-        "Tell" => "tell.dm"
+        "Tell" => "tell.md"
     ],
 )
