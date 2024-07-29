@@ -1,6 +1,6 @@
 # DoViP
 
-## Installation  of DoViP
+## Installation of DoViP step by step (recommended)
 
 ### Create a conda environment and install Julia
 
@@ -14,6 +14,7 @@ conda activate /path/toward/conda_DoViP
 cd /path/toward/conda_DoViP
 wget https://julialang-s3.julialang.org/bin/linux/x64/1.10/julia-1.10.0-linux-x86_64.tar.gz
 tar -xzvf julia-1.10.0-linux-x86_64.tar.gz
+rm julia-1.10.0-linux-x86_64.tar.gz
 mkdir bin
 
 # make a symbolic link of the julia executable in the /path/toward/conda_DoViP/bin/ folder
@@ -54,3 +55,6 @@ julia -e 'using Pkg; Pkg.activate("DoViP_App.jl"); Pkg.instantiate()'
 
 ```
 Instantiation is necessary to bring on your machine the packages on which DoViP depends. After instantiation, it will attempt to start DoViP already, and terefore you will see an error message:  
+
+
+## Instalation of DoViP 
