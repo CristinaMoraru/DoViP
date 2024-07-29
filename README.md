@@ -29,15 +29,25 @@ cd /path/toward/conda_DoViP
 git clone https://github.com/CristinaMoraru/DoViP.git
 
 mv DoViP/* .
+rm DoViP
 
 # give permissions to the folder where julia saved its libraries
 cd share
 chmod 777 -R julia
 ```
 
+### Refresh conda environment
+
+```
+conda deactivate conda_DoViP
+conda activate /path/toward/conda_DoViP
+
+```
+
 ### Instantiate DoViP libraries
 
 ```
+
 cd /path/toward/conda_DoViP/
 
 julia -e 'using Pkg; Pkg.activate("DoViP_App.jl"); Pkg.instantiate()' 
