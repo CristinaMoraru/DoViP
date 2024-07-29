@@ -1,6 +1,6 @@
 # DoViP
 
-The user manual for DoViP contains information about its installation and running procedures and is found [here](https://cristinamoraru.github.io/DoViP/index.htlm). 
+The user manual for DoViP contains information about its installation and running procedures and is found [here](https://cristinamoraru.github.io/DoViP/index.html). 
 
 
 ## Installation of DoViP step by step (recommended)
