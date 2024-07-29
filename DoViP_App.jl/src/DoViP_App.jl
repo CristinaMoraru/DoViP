@@ -133,6 +133,7 @@ const args = [
 
 if "--help" in args
     println("DoViP - a workflow for virus prediction in metagenomes.")
+    show_file_content("../README.md")
 end
 
 println("Start DoViP!")

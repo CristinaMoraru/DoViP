@@ -1,7 +1,6 @@
-## Installation of DoViP step by step (recommended)
+## Variant 1: Step by step
 
-### Create a conda environment and install Julia
-
+### 1. Create the conda environment for DoViP and install Julia programming language
 
 ```
 # create conda env
@@ -21,7 +20,7 @@ ln -s /path/toward/conda_DoViP/julia-1.10.0/bin/julia /path/toward/conda_DoViP/b
 ```
 
 
-### Bring the DoViP repo
+### 2. Bring the DoViP repo
 
 ```
 cd /path/toward/conda_DoViP
@@ -35,7 +34,7 @@ cd share
 chmod 777 -R julia
 ```
 
-### Refresh conda environment
+### 3. Refresh the DoViP conda environment
 
 ```
 conda deactivate conda_DoViP
@@ -43,7 +42,7 @@ conda activate /path/toward/conda_DoViP
 
 ```
 
-### Instantiate DoViP libraries
+### 4. Instantiate DoViP libraries
 
 ```
 
@@ -52,7 +51,16 @@ cd /path/toward/conda_DoViP/
 julia -e 'using Pkg; Pkg.activate("DoViP_App.jl"); Pkg.instantiate()' 
 
 ```
-Instantiation is necessary to bring on your machine the packages on which DoViP depends. After instantiation, it will attempt to start DoViP already, and terefore you will see an error message:  
+Instantiation is necessary to bring on your machine the packages on which DoViP depends. After instantiation, it will attempt to start DoViP already, and therefore you will see an error message:  "". Ignore it.
+
+### 5.Test installation
+
+```
+DoViP --help
+```
+
+You should get the following message: "DoViP - a workflow for virus prediction in metagenomes."
 
 
-## Instalation of DoViP from a conda pack   fds
+## From a conda package
+- to be prepared
