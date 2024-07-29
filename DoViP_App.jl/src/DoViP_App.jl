@@ -5,7 +5,7 @@ using BioS_ProjsWFs: initialize_workflow
 using DoViP_Lib
 
 
-#args = ARGS
+
 
 ## 
 #= ProjSViP - a single virus prediction workflow
@@ -122,13 +122,14 @@ args = [
     #"num_threads=20"
 ] =#
 
-# ProjMultiWorkflow - a multiple binning workflow
+args = ARGS
+#= ProjMultiWorkflow - a multiple binning workflow
 const args = [
     "projtype=multipleworkflow",
     "spd=/data3/CLM_projs/TEST_Workflows/DoViPv0.8_multi_new_Install",
     "allrefs_params=//data3/CLM_projs/TEST_Workflows/inDoViP/inrefs_params.tsv",
     "continue=false",
-] #
+] =#
 
 if "--help" in args
     println("DoViP - a workflow for virus prediction in metagenomes.")
@@ -136,7 +137,6 @@ end
 
 println("Start DoViP!")
 proj = initialize_workflow(args, ProjSViP_fun)
-Threads.nthreads() = 20
 
 if proj.projtype == "singleworkflow"
     run_workflow(proj)

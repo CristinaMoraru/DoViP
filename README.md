@@ -27,4 +27,18 @@ ln -s /path/toward/conda_DoViP/julia-1.10.0/bin/julia /path/toward/conda_DoViP/b
 ```
 cd /path/toward/conda_DoViP
 git clone https://github.com/CristinaMoraru/DoViP.git
+
+# give permissions to the folder where julia saved its libraries
+cd share
+chmod 777 -R julia
 ```
+
+### Instantiate DoViP libraries
+
+```
+cd /path/toward/conda_DoViP/
+
+julia -e 'using Pkg; Pkg.activate("DoViP_App.jl"); Pkg.instantiate()' 
+
+```
+Instantiation is necessary to bring on your machine the packages on which DoViP depends. After instantiation, it will attempt to start DoViP already, and terefore you will see an error message:  
