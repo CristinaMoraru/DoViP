@@ -57,4 +57,4 @@ julia -e 'using Pkg; Pkg.activate("DoViP_App.jl"); Pkg.instantiate()'
 Instantiation is necessary to bring on your machine the packages on which DoViP depends. After instantiation, it will attempt to start DoViP already, and terefore you will see an error message:  
 
 
-## Instalation of DoViP from a conda pack 
+## Instalation of DoViP from a conda pack  
