@@ -62,5 +62,5 @@ DoViP --help
 You should get the following message: "DoViP - a workflow for virus prediction in metagenomes."
 
 
-## From a conda package
+## Variant 2: From a conda package
 - to be prepared
