@@ -1,5 +1,8 @@
 # DoViP
 
+The user manual for DoViP contains information about its installation and running procedures and is found [here](https://cristinamoraru.github.io/DoViP/index.htlm). 
+
+
 ## Installation of DoViP step by step (recommended)
 
 ### Create a conda environment and install Julia
