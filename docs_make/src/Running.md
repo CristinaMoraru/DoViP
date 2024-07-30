@@ -371,7 +371,8 @@ The PhaTYP predictions will be incorporated in the final virus contig tables.
 
 
 ### NON-INTEGRATED viruses branch: options to select final viral contigs
-At the end of the workflow DoViP keeps only the NON-INTEGRATED viral contigs that fullfill certain criteria. The selection depends on the method used by CheckV to estimate the viral contig completeness, on the value of the viral contig completeness, and on the number of initial predictors that outputed the respective viral contig.   
+At the end of the workflow DoViP keeps only the NON-INTEGRATED viral contigs that fullfill certain criteria. The selection depends on the method used by CheckV to estimate the viral contig completeness, on the value of the viral contig completeness, and on the number of initial predictors that outputed the respective viral contig. 
+
 
 If CheckV could not estimate the completeness of the viral contigs:
   * it means that CheckV could not find similarities in its database
@@ -382,6 +383,7 @@ If CheckV could not estimate the completeness of the viral contigs:
   * value is Integer
   * default is 3
 
+
 If CheckV used AAIHighConf method to estimate the completeness of the viral contigs:
   * it means that it found related viruses in its database and it can estimate the completeness with high precission
   * all viral contigs with a completeness of at least 90% are kept, regardless of the number of initial predictors 
@@ -390,9 +392,10 @@ If CheckV used AAIHighConf method to estimate the completeness of the viral cont
   * value is Integer
   * default is 1
 #### `NONInt_th_completeness_CheckV_AAIHighConf`
-  * this parameter gives the minimum completeness of a viral contig when the method for determining the completeness is AAIHighConf
+  * this parameter gives the minimum completeness to keep a viral contig when the method for determining the completeness is AAIHighConf
   * value is Float
   * default is 30.0
+
 
 If CheckV used AAIMediumConf method to estimate the completeness of the viral contigs:
   * it means that it found related viruses in its database and it can estimate the completeness with moderate precission
@@ -401,9 +404,10 @@ If CheckV used AAIMediumConf method to estimate the completeness of the viral co
   * value is Integer
   * default is 2	
 #### `NONInt_th_completeness_CheckV_AAIMediumConf`	
-  * this parameter gives the minimum completeness of a viral contig when the method for determining the completeness is AAIMediumConf
+  * this parameter gives the minimum completeness to keep a viral contig when the method for determining the completeness is AAIMediumConf
   * value is Float
   * default is 10.0
+
 
 If CheckV used HMM method to estimate the completeness of the viral contigs:
   * it means that it found distantly related viruses in its database and it can estimate the completeness with low precission
@@ -412,9 +416,10 @@ If CheckV used HMM method to estimate the completeness of the viral contigs:
   * value is Integer
   * default is 2	
 #### `NONInt_th_completeness_CheckV_HMM`	
-  * this parameter gives the minimum completeness of a viral contig when the method for determining the completeness is HMM
+  * this parameter gives the minimum completeness to keep a viral contig when the method for determining the completeness is HMM
   * value is Float
   * default is 10.0
+
 
 ### INTEGRATED viruses branch: options to select final viral contigs
 At the end of the workflow DoViP keeps only the INTEGRATED viruses that fullfill certain criteria. The selection depends on the method used by CheckV to estimate the viral contig completeness, on the value of the viral contig completeness, and on the number of initial predictors that outputed the respective viral contig.   
@@ -428,6 +433,7 @@ If CheckV could not estimate the completeness of the viral contigs:
   * value is Integer
   * default is 3
 
+
 If CheckV used AAIHighConf method to estimate the completeness of the viral contigs:
   * it means that it found related viruses in its database and it can estimate the completeness with high precission
   * all viral contigs with a completeness of at least 90% are kept, regardless of the number of initial predictors 
@@ -436,9 +442,10 @@ If CheckV used AAIHighConf method to estimate the completeness of the viral cont
   * value is Integer
   * default is 1
 #### `Int_th_completeness_CheckV_AAIHighConf`
-  * this parameter gives the minimum completeness of a viral contig when the method for determining the completeness is AAIHighConf
+  * this parameter gives the minimum completeness to keep a viral contig when the method for determining the completeness is AAIHighConf
   * value is Float
   * default is 30.0
+
 
 If CheckV used AAIMediumConf method to estimate the completeness of the viral contigs:
   * it means that it found related viruses in its database and it can estimate the completeness with moderate precission
@@ -447,9 +454,10 @@ If CheckV used AAIMediumConf method to estimate the completeness of the viral co
   * value is Integer
   * default is 2	
 #### `Int_th_completeness_CheckV_AAIMediumConf`	
-  * this parameter gives the minimum completeness of a viral contig when the method for determining the completeness is AAIMediumConf
+  * this parameter gives the minimum completeness to keep a viral contig when the method for determining the completeness is AAIMediumConf
   * value is Float
   * default is 10.0
+
 
 If CheckV used HMM method to estimate the completeness of the viral contigs:
   * it means that it found distantly related viruses in its database and it can estimate the completeness with low precission
@@ -458,6 +466,6 @@ If CheckV used HMM method to estimate the completeness of the viral contigs:
   * value is Integer
   * default is 2		
 #### `Int_th_completeness_CheckV_HMM`
-  * this parameter gives the minimum completeness of a viral contig when the method for determining the completeness is HMM
+  * this parameter gives the minimum completeness to keep a viral contig when the method for determining the completeness is HMM
   * value is Float
   * default is 10.0
