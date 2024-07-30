@@ -308,11 +308,11 @@ If this this step is selected for running (`viralVerify_signal=do`), the followi
 
 ### PARAMETERS FOR CONSENSUS PREDICTION STEPS
 ### CheckV options
-CheckV is used bothh on the NON-INTEGRATED and INTEGRATED viruses branch to detect viral contigs with host contamination (if they are on the NON-INTEGRATED branch they will be moved to the INTEGRATED branch) and remove the host regions.  
-In all cases, CheckV is run with the following command:
-    ```
-    checkv end_to_end 'path/to/input.fasta' 'path/to/output_folder' -t `checkv_cpus_per_task` -d `checkvDB_p` --remove_tmp
-    ```
+CheckV is used both on the NON-INTEGRATED and INTEGRATED viruses branch to detect viral contigs with host contamination (if they are on the NON-INTEGRATED branch they will be moved to the INTEGRATED branch) and remove the host regions.  
+In all cases, CheckV is run with the following command:  
+```
+checkv end_to_end 'path/to/input.fasta' 'path/to/output_folder' -t `checkv_cpus_per_task` -d `checkvDB_p` --remove_tmp
+```
 The CheckV statistics will be incorporated in the final virus contig tables.
 
 #### `checkv_env`	
@@ -339,9 +339,9 @@ The CheckV statistics will be incorporated in the final virus contig tables.
 ### PhaTYP options
 PhaTYP is used on the NON-INTEGRATED viruses branch to predict the potential lifestyle of the respective viruses.  
 PhaTYP is run with the following command:
-    ```
-    python `phaTYPdb_p/PhaTYP_single.py` --contigs 'path/to/input.fasta' --threads `phaTYP_cpus_per_task` --len `min_contig_length` --rootpth 'path/to/temp_output_folder' --out 'path/to/output_folder' --dbdir `phaTYPdb_p` --parampth `phaTYPparam_p`
-    ```
+```
+python `phaTYPdb_p/PhaTYP_single.py` --contigs 'path/to/input.fasta' --threads `phaTYP_cpus_per_task` --len `min_contig_length` --rootpth 'path/to/temp_output_folder' --out 'path/to/output_folder' --dbdir `phaTYPdb_p` --parampth `phaTYPparam_p`
+```
 The PhaTYP predictions will be incorporated in the final virus contig tables.
 #### `phaTYP_env`	
   * the path toward the conda environment where PhaTYP is installed
