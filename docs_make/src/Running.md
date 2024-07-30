@@ -73,7 +73,7 @@ If, instead of running geNomad, external results should be used, the following w
 
 #### `genomad_res`
   * the path toward the folder with geNomad results that were calculated outside DoViP
-  * needed only if 'genomad_signal=use_external'
+  * needed only if `genomad_signal=use_external`
 #### `genomad_env`
   * the path toward the conda environment where geNomad is installed
   * mandatory parameter if geNomad signal is `do`, no default is given
@@ -178,7 +178,7 @@ If this this step is selected for running (`virSorter2_signal=do`), the followin
 
 #### `virSorter2_res`	
   * the path toward the folder with VirSorter2 results that were calculated outside DoViP
-  * needed only if 'virSorter2_signal=use_external'
+  * needed only if `virSorter2_signal=use_external`
 #### `virSorter2_env`	
   * the path toward the conda environment where VirSorter2 is installed
   * mandatory parameter if virSorter2 signal is `do`, no default is given, no default is given
@@ -231,7 +231,7 @@ If this this step is selected for running (`vibrant_signal=do`), the following w
 
 #### `vibrant_res`	
   * the path toward the folder with VIBRANT results that were calculated outside DoViP
-  * needed only if 'vibrant_signal=use_external'
+  * needed only if `vibrant_signal=use_external`
 #### `vibrant_env`	
   * the path toward the conda environment where VIBRANT is installed
   * mandatory parameter if VIBRANT signal is `do`, no default is given, no default is given
@@ -279,7 +279,7 @@ If this this step is selected for running (`viralVerify_signal=do`), the followi
   * mandatory parameter, no default is given
 #### `viralVerify_res`	
   * the path toward the folder with ViralVerify results that were calculated outside DoViP
-  * needed only if 'viralVerify_signal=use_external'
+  * needed only if `viralVerify_signal=use_external`
 #### `viralVerify_env`	
   * the path toward the conda environment where ViralVerify is installed
   * mandatory parameter if ViralVerify signal is `do`, no default is given, no default is given
@@ -316,8 +316,8 @@ checkv end_to_end 'path/to/input.fasta' 'path/to/output_folder' -t `checkv_cpus_
 The CheckV statistics will be incorporated in the final virus contig tables.
 
 #### `checkv_env`	
-    * the path toward the conda environment where CheckV is installed
-    * mandatory parameter, no default is given
+  * the path toward the conda environment where CheckV is installed
+  * mandatory parameter, no default is given
 #### `checkvDB_p`	
   * the path toward the folder with the CheckV database
   * mandatory parameter, no default is given
@@ -329,7 +329,7 @@ The CheckV statistics will be incorporated in the final virus contig tables.
   * the maximum number of CPUs in which CheckV should be run (either on a local server or on HPC)
   * when running on an HPC, this parameter will be further transmited to sbatch
   * value is Integer
-  * default is 20 
+  * default is 2 
 #### `checkv_sbatch_mem`	
   * the maximum memmory requirements if checkV is run as an sbatch job
   * this parameter will be further transmited to sbatch
@@ -340,7 +340,7 @@ The CheckV statistics will be incorporated in the final virus contig tables.
 PhaTYP is used on the NON-INTEGRATED viruses branch to predict the potential lifestyle of the respective viruses.  
 PhaTYP is run with the following command:
 ```
-python `phaTYPdb_p/PhaTYP_single.py` --contigs 'path/to/input.fasta' --threads `phaTYP_cpus_per_task` --len `min_contig_length` --rootpth 'path/to/temp_output_folder' --out 'path/to/output_folder' --dbdir `phaTYPdb_p` --parampth `phaTYPparam_p`
+python `phaTYP_p/PhaTYP_single.py` --contigs 'path/to/input.fasta' --threads `phaTYP_cpus_per_task` --len `min_contig_length` --rootpth 'path/to/temp_output_folder' --out 'path/to/output_folder' --dbdir `phaTYPdb_p` --parampth `phaTYPparam_p`
 ```
 The PhaTYP predictions will be incorporated in the final virus contig tables.
 #### `phaTYP_env`	
@@ -363,7 +363,7 @@ The PhaTYP predictions will be incorporated in the final virus contig tables.
   * the maximum number of CPUs in which PhaTYP should be run (either on a local server or on HPC)
   * when running on an HPC, this parameter will be further transmited to sbatch
   * value is Integer
-  * default is 20 
+  * default is 2 
 #### `phaTYP_sbatch_mem`	
   * the maximum memmory requirements if PhaTYP is run as an sbatch job
   * this parameter will be further transmited to sbatch
@@ -371,19 +371,93 @@ The PhaTYP predictions will be incorporated in the final virus contig tables.
 
 
 ### NON-INTEGRATED viruses branch: options to select final viral contigs
+At the end of the workflow DoViP keeps only the NON-INTEGRATED viral contigs that fullfill certain criteria. The selection depends on the method used by CheckV to estimate the viral contig completeness, on the value of the viral contig completeness, and on the number of initial predictors that outputed the respective viral contig.   
+
+If CheckV could not estimate the completeness of the viral contigs:
+  * it means that CheckV could not find similarities in its database
+  * than only the number of viral predictors is taken into consideration. 
+  * I recommend using a higher number of initial predictors, to increase the confidence that the respective contig is actually viral  
 #### `NONInt_th_num_predictors_CheckV_NA`	
-#### `NONInt_th_num_predictors_CheckV_AAIHighConf`	
-#### `NONInt_th_completeness_CheckV_AAIHighConf`	
-#### `NONInt_th_num_predictors_CheckV_AAIMediumConf`	
+  * this parameters gives the minimum number of initial predictors necessary to keep a viral contig if completeness is NA
+  * value is Integer
+  * default is 3
+
+If CheckV used AAIHighConf method to estimate the completeness of the viral contigs:
+  * it means that it found related viruses in its database and it can estimate the completeness with high precission
+  * all viral contigs with a completeness of at least 90% are kept, regardless of the number of initial predictors 
+#### `NONInt_th_num_predictors_CheckV_AAIHighConf`
+  * this parameter gives the minimum number of initial predictors necessary to keep a viral contig if the method for determining the completeness is AAIHighConf
+  * value is Integer
+  * default is 1
+#### `NONInt_th_completeness_CheckV_AAIHighConf`
+  * this parameter gives the minimum completeness of a viral contig when the method for determining the completeness is AAIHighConf
+  * value is Float
+  * default is 30.0
+
+If CheckV used AAIMediumConf method to estimate the completeness of the viral contigs:
+  * it means that it found related viruses in its database and it can estimate the completeness with moderate precission
+#### `NONInt_th_num_predictors_CheckV_AAIMediumConf`
+  * this parameter gives the minimum number of initial predictors necessary to keep a viral contig if the method for determining the completeness is AAIMediumConf
+  * value is Integer
+  * default is 2	
 #### `NONInt_th_completeness_CheckV_AAIMediumConf`	
+  * this parameter gives the minimum completeness of a viral contig when the method for determining the completeness is AAIMediumConf
+  * value is Float
+  * default is 10.0
+
+If CheckV used HMM method to estimate the completeness of the viral contigs:
+  * it means that it found distantly related viruses in its database and it can estimate the completeness with low precission
 #### `NONInt_th_num_predictors_CheckV_HMM`	
+  * this parameter gives the minimum number of initial predictors necessary to keep a viral contig if the method for determining the completeness is HMM
+  * value is Integer
+  * default is 2	
 #### `NONInt_th_completeness_CheckV_HMM`	
+  * this parameter gives the minimum completeness of a viral contig when the method for determining the completeness is HMM
+  * value is Float
+  * default is 10.0
 
 ### INTEGRATED viruses branch: options to select final viral contigs
+At the end of the workflow DoViP keeps only the INTEGRATED viruses that fullfill certain criteria. The selection depends on the method used by CheckV to estimate the viral contig completeness, on the value of the viral contig completeness, and on the number of initial predictors that outputed the respective viral contig.   
+
+If CheckV could not estimate the completeness of the viral contigs:
+  * it means that CheckV could not find similarities in its database
+  * than only the number of viral predictors is taken into consideration. 
+  * I recommend using a higher number of initial predictors, to increase the confidence that the respective contig is actually viral  
 #### `Int_th_num_predictors_CheckV_NA`	
+  * this parameter gives the minimum number of initial predictors necessary to keep a viral contig if completeness is NA
+  * value is Integer
+  * default is 3
+
+If CheckV used AAIHighConf method to estimate the completeness of the viral contigs:
+  * it means that it found related viruses in its database and it can estimate the completeness with high precission
+  * all viral contigs with a completeness of at least 90% are kept, regardless of the number of initial predictors 
 #### `Int_th_num_predictors_CheckV_AAIHighConf`	
-#### `Int_th_completeness_CheckV_AAIHighConf`	
+  * this parameter gives the minimum number of initial predictors necessary to keep a viral contig if the method for determining the completeness is AAIHighConf
+  * value is Integer
+  * default is 1
+#### `Int_th_completeness_CheckV_AAIHighConf`
+  * this parameter gives the minimum completeness of a viral contig when the method for determining the completeness is AAIHighConf
+  * value is Float
+  * default is 30.0
+
+If CheckV used AAIMediumConf method to estimate the completeness of the viral contigs:
+  * it means that it found related viruses in its database and it can estimate the completeness with moderate precission
 #### `Int_th_num_predictors_CheckV_AAIMediumConf`	
+  * this parameter gives the minimum number of initial predictors necessary to keep a viral contig if the method for determining the completeness is AAIMediumConf
+  * value is Integer
+  * default is 2	
 #### `Int_th_completeness_CheckV_AAIMediumConf`	
-#### `Int_th_num_predictors_CheckV_HMM`	
+  * this parameter gives the minimum completeness of a viral contig when the method for determining the completeness is AAIMediumConf
+  * value is Float
+  * default is 10.0
+
+If CheckV used HMM method to estimate the completeness of the viral contigs:
+  * it means that it found distantly related viruses in its database and it can estimate the completeness with low precission
+#### `Int_th_num_predictors_CheckV_HMM`
+  * this parameter gives the minimum number of initial predictors necessary to keep a viral contig if the method for determining the completeness is HMM
+  * value is Integer
+  * default is 2		
 #### `Int_th_completeness_CheckV_HMM`
+  * this parameter gives the minimum completeness of a viral contig when the method for determining the completeness is HMM
+  * value is Float
+  * default is 10.0
