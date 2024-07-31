@@ -2,6 +2,9 @@
 
 ## General project options
 
+#### `pd_prefix`
+  * this is the path toward the folder where the outputs will be saved. The outputs from each individual sample will be grouped into subfolders in this folder. In the case of the `singleworkflow` mode, only one subfolder (for one sample) will be saved. In the case of the `multiworklow` mode, several subfolders will be saved, each corresponding to one sample. The subfolders will have the same names as their corresponding input fasta files (minus the file extension). This is the single parameter that should NOT be given in the .tsv file with parameters for the multiworkflow mode.     
+
 #### `inref`
   * the path toward the fasta file containing the input contigs. 
   * Accepted file extensions are: ".fasta", ".fna", ".fst", ".fas", ".fa", ".mfa"
@@ -25,7 +28,7 @@
   * this is useful for example when changing the desired initial predictors (see details below) or the thresholds for the final selection of the viral contigs
   * possible values: 'true' or 'false'
   * default is 'false'
-!!! Note: 
+!!! note 
     if continue is set to 'false' and the project folder allready exists, a message will appear asking to confirm or deny the deletion of the existing folder.
 
 #### `stop_after_initial_predictors`	

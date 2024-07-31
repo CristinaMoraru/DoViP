@@ -19,6 +19,7 @@ makedocs(;
              "Overview" => "Running.md",
              "Single workflow parameters" => "Running_singleworkflow_params.md",
              "Multiple workflows parameters" => "Running_multipleworkflow_params.md"
-             ]
+             ],
+        "Outputs" => []
     ],
 )
