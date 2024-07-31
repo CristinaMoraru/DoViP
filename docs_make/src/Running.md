@@ -5,25 +5,25 @@ DoViP can be run in a single sample mode (`projtype=singleworkflow`) or in a mul
 
 ## Modalities to call DoViP
 
-After activating the corresponding conda environment, DoViP can be started simply by its name. This calls a bash function which starts the Julia programming language and the DoViP_App.jl module.  
-    ```
-    conda activate conda_DoViP
+After activating the corresponding conda environment, DoViP can be started simply by its name. This calls a bash function which starts the Julia programming language and the `DoViP_App.jl` module.  
+```
+conda activate conda_DoViP
 
-    DoViP [...args]
-    ```
+DoViP [...args]
+```
 
-Alternatively, the DoViP_App module can be called directly, as exemplified below.  
-    ```
-    julia path/to/conda_DoViP/DoViP_App.jl/src/DoViP_App.jl [...args]
-    ```
-Calling directly the DoViP_App.jl module is required when using tools like `nice` (to set process priorities) and `taskset` (to confine the processes only to a selected CPUs subset).  
-    ```
-    nice -n 10 taskset -c 76-90 julia path/to/conda_DoViP/DoViP_App.jl/src/DoViP_App.jl [...args]
-    ```
+Alternatively, the `DoViP_App` module can be called directly, as exemplified below.  
+```
+julia path/to/conda_DoViP/DoViP_App.jl/src/DoViP_App.jl [...args]
+```
+Calling directly the `DoViP_App.jl` module is required when using tools like `nice` (to set process priorities) and `taskset` (to confine the processes only to a selected CPUs subset).  
+```
+nice -n 10 taskset -c 76-90 julia path/to/conda_DoViP/DoViP_App.jl/src/DoViP_App.jl [...args]
+```
     
-The parameters used by DoViP for each sample are saved in its corresponding subfolder in the file `project_parameters_and_status.txt`. Besides the parameters, in this file it is also saved a brief status report showing which individual steps should be run, have been finished or are curently running. However, the complete log for each DoViP step is sent to the standard output. To save it and potential errors to a file, use the code below:
-    ```
-    nice -n 10 taskset -c 76-90 julia path/to/conda_DoViP/DoViP_App.jl/src/DoViP_App.jl [...args] > dovip_sample.log 2> dovip_sample.err 
-    ```
+The parameters used by DoViP for each sample are saved in its corresponding subfolder in the file `project_parameters_and_status.txt`. Besides the parameters, in this file it is also saved a brief status report showing which individual steps should be run, have been finished or are curently running. However, the complete log for each DoViP step is sent to the standard output. To save it and potential errors to a file, use the code below:  
+```
+nice -n 10 taskset -c 76-90 julia path/to/conda_DoViP/DoViP_App.jl/src/DoViP_App.jl [...args] > dovip_sample.log 2> dovip_sample.err 
+```
 !!! note
     If the project folder or individual sample subfolders already exist, for example from a previous DoViP run, and the DoViP is started with the parameter `continue=false`, the user will be asked at the standard output if the existent folders should be overwriten or not. This message will not be visible if the standard output is sent to a file.
