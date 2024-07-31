@@ -1,5 +1,6 @@
 # DoViP multipleworkflow parameters 
 
+## Arguments
 When running DoViP in multiworkflow mode, there are only four arguments that need to be given at the command line.
 
 #### `projtype`
@@ -25,4 +26,12 @@ When running DoViP in multiworkflow mode, there are only four arguments that nee
 
 !!! note 
     if continue is set to 'false' and the project folder allready exists, a message will appear asking to confirm or deny the deletion of the existing folder.
-    
+
+## Example command
+Example of calling DoViP in multiworkflow mode:
+```
+DoViP projtype=multiworkflow continue=false allrefs_params=path/to/tsv_file_with_parameters spd=path/to/output_folder
+```
+
+!!! tip
+    Due to the high number of arguments needed by DoViP, it is easier to call it in `multipleworkflow` mode even when running one single sample, because in this mode most of parameters are given as a .tsv file. 

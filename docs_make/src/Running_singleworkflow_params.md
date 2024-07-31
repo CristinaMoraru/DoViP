@@ -1,6 +1,6 @@
 # DoViP singleworklow parameters 
 
-## General project options
+## General project arguments
 
 #### `pd_prefix`
   * this is the path toward the folder where the outputs will be saved. The outputs from each individual sample will be grouped into subfolders in this folder. In the case of the `singleworkflow` mode, only one subfolder (for one sample) will be saved. In the case of the `multiworklow` mode, several subfolders will be saved, each corresponding to one sample. The subfolders will have the same names as their corresponding input fasta files (minus the file extension). This is the single parameter that should NOT be given in the .tsv file with parameters for the multiworkflow mode.     
@@ -42,7 +42,7 @@
   * value is Integer
   * default value is 1000
 
-## PARAMETERS FOR INITIAL PREDICTION STEPS
+## ARGUMENTS FOR INITIAL PREDICTION STEPS
 
 ### geNomad options
 If this this step is selected for running (`genomad_signal=do`), the following will happen:  
@@ -301,8 +301,8 @@ If this this step is selected for running (`viralVerify_signal=do`), the followi
   * this parameter will be further transmitted to sbatch
   * mandatory parameter when running on HPC and ViralVerify signal is `do`, no default is given 
 
-## PARAMETERS FOR CONSENSUS PREDICTION STEPS
-### CheckV options
+## ARGUMENTS FOR CONSENSUS PREDICTION STEPS
+### CheckV arguments
 CheckV is used both on the NON-INTEGRATED and INTEGRATED viruses branch to detect viral contigs with host contamination (if they are on the NON-INTEGRATED branch they will be moved to the INTEGRATED branch) and remove the host regions.  
 In all cases, CheckV is run with the following command:  
 ```
@@ -330,7 +330,7 @@ The CheckV statistics will be incorporated in the final virus contig tables.
   * this parameter will be further transmitted to sbatch
   * mandatory parameter when running on HPC, no default is given 
 
-### PhaTYP options
+### PhaTYP arguments
 PhaTYP is used on the NON-INTEGRATED viruses branch to predict the potential lifestyle of the respective viruses.  
 PhaTYP is run with the following command:
 ```
@@ -363,7 +363,7 @@ The PhaTYP predictions will be incorporated in the final virus contig tables.
   * this parameter will be further transmitted to sbatch
   * mandatory parameter when running on HPC, no default is given 
 
-## NON-INTEGRATED viruses branch: options to select final viral contigs
+## NON-INTEGRATED viruses branch: arguments to select final viral contigs
 At the end of the workflow DoViP keeps only the NON-INTEGRATED viral contigs that fulfill certain criteria. The selection depends on the method used by CheckV to estimate the viral contig completeness, on the value of the viral contig completeness, and on the number of initial predictors that outputted the respective viral contig. 
 
 ### If CheckV could not estimate the completeness of the viral contigs:
@@ -409,7 +409,7 @@ At the end of the workflow DoViP keeps only the NON-INTEGRATED viral contigs tha
   * value is Float
   * default is 10.0
 
-## INTEGRATED viruses branch: options to select final viral contigs
+## INTEGRATED viruses branch: arguments to select final viral contigs
 At the end of the workflow DoViP keeps only the INTEGRATED viruses that fulfill certain criteria. The selection depends on the method used by CheckV to estimate the viral contig completeness, on the value of the viral contig completeness, and on the number of initial predictors that outputted the respective viral contig.   
 
 ### If CheckV could not estimate the completeness of the viral contigs:

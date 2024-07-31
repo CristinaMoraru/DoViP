@@ -2,6 +2,8 @@
 
 DoViP can be run in a single sample mode (`projtype=singleworkflow`) or in a multiple sample mode (`projtype=multipleworkflow`). In singleworkflow mode it processes only one sample (one input fasta file, representing a metagenome for example). There are many parameters required for the singleworkflow mode (see next page) and they should all be given as arguments at the command line. In multipleworkflow mode DoViP processes multiple samples (multiple input fasta files) one after the other, each with its own individual parameters (the same parameters as for singleworkflow mode, but without `pd_prefix`). These parameters should be given to DoViP as a .tsv table, where one row represents one sample. 
 
+!!! tip
+    Due to the high number of arguments needed by DoViP, it is easier to call it in `multipleworkflow` mode even when running one single sample, because in this mode most of parameters are given as a .tsv file. 
 
 ## Modalities to call DoViP
 
