@@ -72,7 +72,7 @@ If, instead of running geNomad, external results should be used, the following w
   * the path toward the folder with geNomad results that were calculated outside DoViP
   * needed only if `genomad_signal=use_external`
 #### `genomad_env`
-  * the path toward the conda environment where geNomad is installed
+  * the name of the conda environment where geNomad is installed
   * mandatory parameter if geNomad signal is `do`, no default is given
 #### `genomadDB_p`  
   * the path toward the folder with the geNomad database
@@ -119,7 +119,7 @@ If this this step is selected for running (`DVF_signal=do`), the following will 
   * mandatory parameter if DVF should be run, no default is given
 
 #### `DVF_env`
-  * the path toward the conda environment where DVF is installed
+  * the name of the conda environment where DVF is installed
   * mandatory parameter, no default is given    
 #### `DVF_maxContigLen` 
   * the maximum length that a contig should have for DVF. If larger than this value, it will be cut into smaller pieces before being inputted into DVF.
@@ -177,7 +177,7 @@ If this this step is selected for running (`virSorter2_signal=do`), the followin
   * the path toward the folder with VirSorter2 results that were calculated outside DoViP
   * needed only if `virSorter2_signal=use_external`
 #### `virSorter2_env`   
-  * the path toward the conda environment where VirSorter2 is installed
+  * the name of the conda environment where VirSorter2 is installed
   * mandatory parameter if virSorter2 signal is `do`, no default is given, no default is given
 #### `virSorter2DB_p`
   * the path toward the folder with the virSorter2 database
@@ -230,7 +230,7 @@ If this this step is selected for running (`vibrant_signal=do`), the following w
   * the path toward the folder with VIBRANT results that were calculated outside DoViP
   * needed only if `vibrant_signal=use_external`
 #### `vibrant_env`  
-  * the path toward the conda environment where VIBRANT is installed
+  * the name of the conda environment where VIBRANT is installed
   * mandatory parameter if VIBRANT signal is `do`, no default is given, no default is given
 #### `vibrant_p`
   * path/to/VIBRANT_run.py  
@@ -277,7 +277,7 @@ If this this step is selected for running (`viralVerify_signal=do`), the followi
   * the path toward the folder with ViralVerify results that were calculated outside DoViP
   * needed only if `viralVerify_signal=use_external`
 #### `viralVerify_env`  
-  * the path toward the conda environment where ViralVerify is installed
+  * the name of the conda environment where ViralVerify is installed
   * mandatory parameter if ViralVerify signal is `do`, no default is given, no default is given
 #### `viralVerifyDB_p`  
   * the path toward the HMM profile file of the ViralVerify database
@@ -311,7 +311,7 @@ checkv end_to_end 'path/to/input.fasta' 'path/to/output_folder' -t `checkv_cpus_
 The CheckV statistics will be incorporated in the final virus contig tables.
 
 #### `checkv_env`   
-  * the path toward the conda environment where CheckV is installed
+  * the name of the conda environment where CheckV is installed
   * mandatory parameter, no default is given
 #### `checkvDB_p`   
   * the path toward the folder with the CheckV database
@@ -338,7 +338,7 @@ python `phaTYP_p/PhaTYP_single.py` --contigs 'path/to/input.fasta' --threads `ph
 ```
 The PhaTYP predictions will be incorporated in the final virus contig tables.
 #### `phaTYP_env`   
-  * the path toward the conda environment where PhaTYP is installed
+  * the name of the conda environment where PhaTYP is installed
   * mandatory parameter, no default is given
 #### `phaTYP_p` 
   * the path toward the folder with PhaTYP

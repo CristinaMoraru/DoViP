@@ -20,6 +20,10 @@ makedocs(;
              "Single workflow parameters" => "Running_singleworkflow_params.md",
              "Multiple workflows parameters" => "Running_multipleworkflow_params.md"
              ],
-        "Outputs" => []
+        "DoViP projects and outputs" => [
+            "Project definition" => "dovip_projects.md",
+            "Outputs - overview" => "dovip_outputs_overview.md",
+            "Outputs - step by step breakdown" => "dovip_outputs_stepbystep.md",
+            ]
     ],
 )

@@ -20,6 +20,7 @@ julia path/to/conda_DoViP/DoViP_App.jl/src/DoViP_App.jl [...args]
 ```
 
 Calling directly the `DoViP_App.jl` module is required when using tools like `nice` (to set process priorities) and `taskset` (to confine the processes only to a selected CPU subset).  
+An example using both `nice` and `taskset` is shown below. Ofcourse, replace the values for the `nice` -n and the `taskset` -c parameters with your specific values.  
 ```
 nice -n 10 taskset -c 76-90 julia path/to/conda_DoViP/DoViP_App.jl/src/DoViP_App.jl [...args]
 ```
@@ -36,9 +37,11 @@ nice -n 10 taskset -c 76-90 julia path/to/conda_DoViP/DoViP_App.jl/src/DoViP_App
 
 
 ## DoViP argument syntax
+
 The arguments and their values should be given in the form `argument_name=argument_value`.  
 Example:
 ```
 DoViP projtype=multiworkflow continue=false allrefs_params=path/to/tsv_file_with_parameters spd=path/to/output_folder
 ```
+
 
