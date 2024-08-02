@@ -24,6 +24,7 @@ makedocs(;
             "Project definition" => "dovip_projects.md",
             "Outputs - overview" => "dovip_outputs_overview.md",
             "Outputs - step by step breakdown" => "dovip_outputs_stepbystep.md",
+            "Continue projects" => "continue_projs.md"
             ]
     ],
 )

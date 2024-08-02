@@ -15,7 +15,7 @@ When running DoViP in multiworkflow mode, there are only four arguments that nee
 #### `allrefs_params`
   * path/to/parameter.tsv
   * this is a .tsv file where each row represents a sample to be analysed by DoViP and each column represents one argument. 
-  * this file should contain values for all arguments detailed in the `singleworkflow` page (see previous page), with the exception of `pd_prefix' (is is not needed, because it is replaced here by the `spd` argument)
+  * this file should contain values for all arguments detailed in the `singleworkflow` page (see previous page), with the exception of `pd_prefix` (is is not needed, because it is replaced here by the `spd` argument)
   * an example of this .tsv file can be downloaded from [here](inrefs_params.tsv). Alternatively, you can use for the generation of this input file a [template script using the Julia language](helpers/prep_input.jl) or a [template script using the R language](helpers/prep_input.R).
   * mandatory parameter, no default is given
 
