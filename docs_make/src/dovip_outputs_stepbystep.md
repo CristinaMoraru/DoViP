@@ -1,4 +1,4 @@
-# Outputs - step by steps breakdown
+# Outputs - step by step breakdown
 
 
 ## Removal of small contigs
@@ -12,7 +12,7 @@ single_workflow_project_name/
 ```
 
 ## Running initial predictors
-The .fna file from the removal of small contigs step is sent to each of the initial predictions selected by the user. The results from each intial predictor are saved into folders with corresponding names, within subfolders labeled with the sufix "_out". The "raw" data from each predictor are further postprocessed by DoViP and saved saved in two .tsv files, one for the integrated viruses branch (geNomad, VirSorter2 and VIBRANT), and the other for the non-integrated viruses branch (geNomad, DeepVir Finder, VirSorter2, VIBRANT and ViralVerify). The two .tsv files are saved directly in these folders, as shown below.  
+The .fna file from the removal of small contigs step is sent to each of the initial predictions selected by the user. The results from each intial predictor are saved into folders with corresponding names, within subfolders labeled with the sufix `_out`. The "raw" data from each predictor are further postprocessed by DoViP and saved saved in two .tsv files, one for the integrated viruses branch (geNomad, VirSorter2 and VIBRANT), and the other for the non-integrated viruses branch (geNomad, DeepVir Finder, VirSorter2, VIBRANT and ViralVerify). The two .tsv files are saved directly in these folders, as shown below.  
 
 ```plaintext
 single_workflow_project_name/ 
@@ -41,7 +41,7 @@ single_workflow_project_name/
 
 
 ## Merging and checkV for non-integrated viruses
-In this step, DoViP first brings toghether all virus contigs estimated as lytic by the various predictors and their associated information, and saves them in a .tsv and a .fna file with the prefix N-02_00. The .fna file then is inputed in CheckV, and the results are saved in the `N-02_01_CheckV` folder. Postprocessing after checkV includes moving of the contigs marked as containing integrated viruses on the integrated viruses branch and then saving the remaining non-integrated viruses and their coresponding information in a .tsv and .fna file (prefix N-02_-2..). The folder structure and outputs are shown below.  
+In this step, DoViP first brings toghether all virus contigs estimated as lytic by the various predictors and their associated information, and saves them in a .tsv and a .fna file with the prefix `N-02_00`. The .fna file then is inputed in CheckV, and the results are saved in the `N-02_01_CheckV` folder. Postprocessing after checkV includes moving of the contigs marked as containing integrated viruses on the integrated viruses branch and then saving the remaining non-integrated viruses and their coresponding information in a .tsv and .fna file (prefix `N-02_02`). The folder structure and outputs are shown below.  
 
 ```plaintext
 single_workflow_project_name/ 
@@ -57,11 +57,11 @@ single_workflow_project_name/
 
 ## Merging and checkV for integrated viruses
 In this step DoViP does the following:
-  * brings together all virus contigs estimated as "temperate" by the various predictors, and saved them in a .fna and a .tsv file with the prefix I-02_00.
+  * brings together all virus contigs estimated as "temperate" by the various predictors, and saved them in a .fna and a .tsv file with the prefix `I-02_00`.
   * inputs the .fna file in CheckV, and saves the results in the `I-02_01_checkVIntegrated_1` folder.
-  * uses the information from the initial predictors and CheckV to remove host regions and to merge overlapping viral regions, and saved the them in a .fna and .tsv file with the prefix I-02_03 (the filex with I_02_02 represent intermediary results).
+  * uses the information from the initial predictors and CheckV to remove host regions and to merge overlapping viral regions, and saved the them in a .fna and .tsv file with the prefix `I-02_03` (the filex with I_02_02 represent intermediary results).
   * sends the merged integrated viruses to CheckV, and saves the data in the folder `I-02_04_checkVIntegrated_2`
-  * postprocesses the output from the second CheckV step to confirm that no host-contamination is present and to add the completeness and other checkV data to the merged integrated viruses. The data are saved in the file with the I-02_05 prefix.
+  * postprocesses the output from the second CheckV step to confirm that no host-contamination is present and to add the completeness and other checkV data to the merged integrated viruses. The data are saved in the file with the `I-02_05` prefix.
   
 ```plaintext
 single_workflow_project_name/ 
@@ -80,7 +80,7 @@ single_workflow_project_name/
 ```
 
 ## Predicting virus lifestyles with PhaTYP
-In this step DoViP sends the non-integrated viruses from the previous step (N-02_02_postcheckV_nonintegrated.fna) to PhaTYP, which predicts their potential life styles. The PhaTYP results are saved in the folder with the `_out` suffix. The predictions are then added to the previous data and saved in the .tsv file with the N-03_02 prefix.
+In this step DoViP sends the non-integrated viruses from the previous step (N-02_02_postcheckV_nonintegrated.fna) to PhaTYP, which predicts their potential life styles. The PhaTYP results are saved in the folder with the `_out` suffix. The predictions are then added to the previous data and saved in the .tsv file with the `N-03_02` prefix.
 
 ```plaintext
 single_workflow_project_name/ 
