@@ -1,0 +1,1 @@
+DoViP was developed by Dr. Cristina Moraru, a senior scientist at the University of Duisburg-Essen. 

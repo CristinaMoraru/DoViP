@@ -25,6 +25,8 @@ makedocs(;
             "Outputs - overview" => "dovip_outputs_overview.md",
             "Outputs - step by step breakdown" => "dovip_outputs_stepbystep.md",
             "Continue projects" => "continue_projs.md"
-            ]
+            ],
+        "Release notes" => "releases.md",
+        "Authors" => "authors.md"
     ],
 )
