@@ -69,8 +69,15 @@ If, instead of running geNomad, external results should be used, the following w
   * mandatory parameter, no default is given
 
 #### `genomad_res`
-  * the path toward the folder with geNomad results that were calculated outside DoViP
+  * `/path/to/geNomad_output_folder` when the geNomad predictions were calculated outside DoViP
   * needed only if `genomad_signal=use_external`
+  * the path should be the exact one that was given to the geNomad command as output folder
+  * DoViP will expect to find inside `/path/to/geNomad_output_folder` the geNomad `summary` folder (name pattern beeing composed from the `input_name`, without file extension, and `summary`):
+```plaintext
+/path/to/geNomad_output_folder/
+    ├──  input_name_summary
+```
+
 #### `genomad_env`
   * the name of the conda environment where geNomad is installed
   * mandatory parameter if geNomad signal is `do`, no default is given
@@ -174,8 +181,16 @@ If this this step is selected for running (`virSorter2_signal=do`), the followin
   * mandatory parameter, no default is given
 
 #### `virSorter2_res`   
-  * the path toward the folder with VirSorter2 results that were calculated outside DoViP
+  * `path/to/VirSorter2`_output_folder when VirSorter2 results were calculated outside DoViP
   * needed only if `virSorter2_signal=use_external`
+  * the path should be the exact one that was given to the VirSorter2 command as output folder
+  * DoViP expects to find inside `path/to/VirSorter2_output_folder` the following files:
+```plaintext
+path/to/VirSorter2_output_folder/
+    ├── final-viral-score.tsv 
+    ├── final-viral-boundary.tsv
+```
+
 #### `virSorter2_env`   
   * the name of the conda environment where VirSorter2 is installed
   * mandatory parameter if virSorter2 signal is `do`, no default is given, no default is given
@@ -227,8 +242,15 @@ If this this step is selected for running (`vibrant_signal=do`), the following w
   * mandatory parameter, no default is given
 
 #### `vibrant_res`  
-  * the path toward the folder with VIBRANT results that were calculated outside DoViP
+  * `path/to/VIBRANT_output_folder` when the VIBRANT results were calculated outside DoViP
   * needed only if `vibrant_signal=use_external`
+  * the path should be the exact one that was given to the VIBRANT command as output folder
+  * DoViP expects to find inside `path/to/VIBRANT_output_folder` another folder, created by VIBRANT itself, having as prefix `VIBRANT` and as suffix the `input_name` (without extension):
+```plaintext
+path/to/VIBRANT_output_folder/
+    ├── VIBRANT_input_name 
+```
+
 #### `vibrant_env`  
   * the name of the conda environment where VIBRANT is installed
   * mandatory parameter if VIBRANT signal is `do`, no default is given, no default is given
@@ -274,8 +296,14 @@ If this this step is selected for running (`viralVerify_signal=do`), the followi
 
   * mandatory parameter, no default is given
 #### `viralVerify_res`  
-  * the path toward the folder with ViralVerify results that were calculated outside DoViP
+  * `path/to/ViralVerify_output_folder` when the ViralVerify results were calculated outside DoViP
   * needed only if `viralVerify_signal=use_external`
+  * the path should be the exact one that was given to the ViralVerify command as output folder
+  * DoViP expects to find inside `path/to/ViralVerify_output_folder` a file created by ViralVerify having as prefix the `input_name` (without extension) and as suffix `result_table.csv`:
+```plaintext
+path/to/ViralVerify_output_folder/
+    ├── input_name_result_table.csv
+```
 #### `viralVerify_env`  
   * the name of the conda environment where ViralVerify is installed
   * mandatory parameter if ViralVerify signal is `do`, no default is given, no default is given
