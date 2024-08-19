@@ -39,7 +39,7 @@
 #### `min_contig_length`
   * the minimum length of the contigs from the input file (inref) which should be kept
   * only contigs equal or larger than this value will be sent to the initial predictors
-  * value is Integer
+  * value is Integer (minimum 1000)
   * default value is 1000
 
 ## ARGUMENTS FOR INITIAL PREDICTION STEPS
