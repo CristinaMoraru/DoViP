@@ -89,6 +89,8 @@ input_df[!, :NONInt_th_num_predictors_CheckV_AAIMediumConf] = fill("2", nrow(inp
 input_df[!, :NONInt_th_completeness_CheckV_AAIMediumConf] = fill("10", nrow(input_df))
 input_df[!, :NONInt_th_num_predictors_CheckV_HMM] = fill("2", nrow(input_df))
 input_df[!, :NONInt_th_completeness_CheckV_HMM] = fill("10", nrow(input_df))
+input_df[!, :NONInt_th_num_predictors_CheckV_DTR_ITR_AAI] = fill("1", nrow(input_df))
+input_df[!, :NONInt_th_num_predictors_CheckV_DTR_ITR_HMM] = fill("1", nrow(input_df))
 
 
 # Final thresholding related parameters for INTEGRATED

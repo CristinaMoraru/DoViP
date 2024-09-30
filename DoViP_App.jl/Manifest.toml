@@ -48,11 +48,11 @@ version = "0.2.0"
 
 [[deps.BioS_SeqFuns]]
 deps = ["BioS_Gen", "BioSequences", "CSV", "DataFrames", "FASTX", "FastaIO", "Suppressor"]
-git-tree-sha1 = "2841fcd75813717363cae65634500953ff4b3da0"
-repo-rev = "v0.2.0"
+git-tree-sha1 = "7dbff654222e142b2da571fa5a5e74873566ede5"
+repo-rev = "v0.2.2"
 repo-url = "https://github.com/CristinaMoraru/BioS_SeqFuns.jl"
 uuid = "f626d2e5-ec45-404c-84c6-8efe5c847b30"
-version = "0.2.0"
+version = "0.2.2"
 
 [[deps.BioSequences]]
 deps = ["BioSymbols", "PrecompileTools", "Random", "Twiddle"]
@@ -136,11 +136,11 @@ uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 
 [[deps.DoViP_Lib]]
 deps = ["BioS_ExtTools", "BioS_Gen", "BioS_ProjsWFs", "BioS_SeqFuns", "CSV", "DataFrames", "Revise", "Serialization"]
-git-tree-sha1 = "ab03e69410f4986209d9c775ddd6307efc3b14fe"
-repo-rev = "v0.8.1"
+git-tree-sha1 = "1a14d11ff6b7524d38c412b2945176e36217d93f"
+repo-rev = "v0.9.0"
 repo-url = "https://github.com/CristinaMoraru/DoViP_Lib.jl"
 uuid = "22db7568-0fef-4816-86c4-f780d51317b9"
-version = "0.8.1"
+version = "0.9.0"
 
 [[deps.DocStringExtensions]]
 deps = ["LibGit2"]

@@ -1,5 +1,7 @@
 using Documenter
 
+# Define the versions you want to document
+
 makedocs(;
     #modules=[DoViP_App],
     authors="Cristina Moraru <lilianacristina.moraru@uni-due.de>",
@@ -28,5 +30,5 @@ makedocs(;
             ],
         "Release notes" => "releases.md",
         "Authors" => "authors.md"
-    ],
+    ]
 )

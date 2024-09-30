@@ -4,10 +4,32 @@ using Revise
 using BioS_ProjsWFs: initialize_workflow
 using DoViP_Lib
 
+args = ARGS
+
+
+if "--help" in args
+    println("DoViP - a workflow for virus prediction in metagenomes.")
+    show_file_content("../README.md")
+end
+
+println("Start DoViP!")
+proj = initialize_workflow(args, ProjSViP_fun)
+
+if proj.projtype == "singleworkflow"
+    run_workflow(proj)
+elseif proj.projtype == "multipleworkflow"
+    run_workflowMDoViP(proj)
+end
+
+println("DoVip is done!")
+
+end # module DoViP_App
 
 
 
-## 
+
+#region for testing 
+
 #= ProjSViP - a single virus prediction workflow
 args = [
     "projtype=singleworkflow",
@@ -122,33 +144,11 @@ args = [
     #"num_threads=20"
 ] =#
 
-args = ARGS
 #= ProjMultiWorkflow - a multiple binning workflow
-const args = [
+args = [
     "projtype=multipleworkflow",
-    "spd=/data3/CLM_projs/TEST_Workflows/DoViPv0.8_multi_new_Install",
+    "spd=/data3/CLM_projs/TEST_Workflows/DoViPv0.9",
     "allrefs_params=//data3/CLM_projs/TEST_Workflows/inDoViP/inrefs_params.tsv",
     "continue=false",
 ] =#
-
-if "--help" in args
-    println("DoViP - a workflow for virus prediction in metagenomes.")
-    show_file_content("../README.md")
-end
-
-println("Start DoViP!")
-proj = initialize_workflow(args, ProjSViP_fun)
-
-if proj.projtype == "singleworkflow"
-    run_workflow(proj)
-elseif proj.projtype == "multipleworkflow"
-    run_workflowMDoViP(proj)
-end
-
-println("DoVip is done!")
-
-end # module DoViP_App
-
-
-
-
+ #endregion

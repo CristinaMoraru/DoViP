@@ -116,7 +116,9 @@ input_df <- input_df %>%
   NONInt_th_num_predictors_CheckV_AAIMediumConf ="2",
   NONInt_th_completeness_CheckV_AAIMediumConf ="10",
   NONInt_th_num_predictors_CheckV_HMM ="2",
-  NONInt_th_completeness_CheckV_HMM ="10"
+  NONInt_th_completeness_CheckV_HMM ="10",
+  NONInt_th_num_predictors_CheckV_DTR_ITR_AAI = "1",
+  NONInt_th_num_predictors_CheckV_DTR_ITR_HMM = "1"
   )
 
 # INTEGRATED viruses - final selection parameters
