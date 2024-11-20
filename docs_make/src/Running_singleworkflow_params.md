@@ -440,7 +440,7 @@ At the end of the workflow DoViP keeps only the NON-INTEGRATED viral contigs tha
   * this parameters gives the minimum number of initial predictions necessary to keep a viral contigs if its completeness was determined based on the presence of direct-terminal repeats (DTRs) or inverted-terminal repeats (ITRs) combined with AAI (see CheckV documentation)
   * value is Integer
   * default is 1
-  ### `NONInt_th_num_predictors_CheckV_DTR_ITR_AAI`
+### `NONInt_th_num_predictors_CheckV_DTR_ITR_HMM`
   * this parameters gives the minimum number of initial predictions necessary to keep a viral contigs if its completeness was determined based on the presence of direct-terminal repeats (DTRs) or inverted-terminal repeats (ITRs) combined with HMM (see CheckV documentation)
   * value is Integer
   * default is 1
