@@ -136,11 +136,11 @@ uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 
 [[deps.DoViP_Lib]]
 deps = ["BioS_ExtTools", "BioS_Gen", "BioS_ProjsWFs", "BioS_SeqFuns", "CSV", "DataFrames", "Revise", "Serialization"]
-git-tree-sha1 = "7b6185c22a9a55c2e63a78e1d03b7a01b52de405"
-repo-rev = "v0.9.3"
+git-tree-sha1 = "bdff3da8261ab2fa6240e4152fa0f6507e443f1e"
+repo-rev = "v0.9.35"
 repo-url = "https://github.com/CristinaMoraru/DoViP_Lib.jl"
 uuid = "22db7568-0fef-4816-86c4-f780d51317b9"
-version = "0.9.3"
+version = "0.9.35"
 
 [[deps.DocStringExtensions]]
 deps = ["LibGit2"]
