@@ -9,7 +9,9 @@ args = ARGS
 
 if "--help" in args
     println("DoViP - a workflow for virus prediction in metagenomes.")
-    show_file_content("../README.md")
+    cur_proj = dirname(Base.active_project())
+    print(read("$(cur_proj)/README.md", String))
+    exit()
 end
 
 println("Start DoViP!")
