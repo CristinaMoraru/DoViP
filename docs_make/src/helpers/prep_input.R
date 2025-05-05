@@ -14,7 +14,8 @@ input_df <- input_df %>%
     use_slurm = "false",
     continue = "false",
     stop_after_initial_predictors = "false",
-    min_contig_length = "3000"
+    min_contig_length = "3000",
+    merge_circ_proph = "false"
   )
 
 # Genomad-related parameters
@@ -37,7 +38,7 @@ input_df <- input_df %>%
     DVF_env = "conda_DVF",
     DVF_maxContigLen = "2099000",
     DVF_scoreTh = "0.7",
-    DVF_pThreshold = "0.01",
+    DVF_pThreshold = "0.005",
     DVF_p = "path/to/DeepVirFinder/dvf.py",
     DVF_sbatch_time = "2-0",
     DVF_cpus_per_task = "15",
@@ -117,21 +118,30 @@ input_df <- input_df %>%
   NONInt_th_completeness_CheckV_AAIMediumConf ="10",
   NONInt_th_num_predictors_CheckV_HMM ="2",
   NONInt_th_completeness_CheckV_HMM ="10",
-  NONInt_th_num_predictors_CheckV_DTR_ITR_AAI ="1",
-  NONInt_th_num_predictors_CheckV_DTR_ITR_HMM ="1"
+  NONInt_th_num_predictors_CheckV_DTR_ITR_AAI = "1",
+  NONInt_th_num_predictors_CheckV_DTR_ITR_HMM = "1"
   )
+
+# geNomad Taxonomy
+input_df <- input_df %>%
+  mutate( 
+  genomadtax_sbatch_time = "2-0", 
+  genomadtax_cpus_per_task = "25",
+  genomadtax_sbatch_mem = "20G"
+)
 
 # INTEGRATED viruses - final selection parameters
 input_df <- input_df %>%
   mutate(  
-  Int_th_num_predictors_CheckV_NA ="3",
+  Int_th_num_predictors_CheckV_NA ="2.5",
   Int_th_num_predictors_CheckV_AAIHighConf ="1",
   Int_th_completeness_CheckV_AAIHighConf ="30",
-  Int_th_num_predictors_CheckV_AAIMediumConf ="2",
+  Int_th_num_predictors_CheckV_AAIMediumConf ="1.5",
   Int_th_completeness_CheckV_AAIMediumConf ="10",
-  Int_th_num_predictors_CheckV_HMM ="2",
+  Int_th_num_predictors_CheckV_HMM ="1.5",
   Int_th_completeness_CheckV_HMM ="10"
 )
+
 
 # Write the data frame to a TSV file
 out_p <- "~/SCIENCE/PROJECTS/+test/DoViP/output_inrefs_params.tsv"

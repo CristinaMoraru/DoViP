@@ -11,7 +11,7 @@ A DoViP workflow is split into three steps:
   * **Consensus prediction step**. This is where DoViP brings together the results from all initial predictors. 
   * **Final thresholding step**. This is where DoViP is selecting the final viral contigs/regions.
 
-![DoViPv0.8 workflow scheme](docs_make/src/images/DoViPv0.9_workflow_ms.png)  
+![DoViPv1.0 workflow scheme](docs_make/src/images/DoViPv1.0_workflow_ms_details.png)  
 
 
 The user manual for DoViP contains information about its installation and running procedures and is found [here](https://cristinamoraru.github.io/DoViP/index.html). 

@@ -11,6 +11,7 @@ input_df[!, :use_slurm] = fill("false", nrow(input_df))
 input_df[!, :continue] = fill("false", nrow(input_df))
 input_df[!, :stop_after_initial_predictors] = fill("false", nrow(input_df))
 input_df[!, :min_contig_length] = fill("3000", nrow(input_df))
+input_df[!, :merge_circ_proph] = fill("true", nrow(input_df))
 
 # genomad related parameters
 input_df[!, :genomad_signal] = fill("do", nrow(input_df))
@@ -27,7 +28,7 @@ input_df[!, :DVF_signal] = fill("do", nrow(input_df))
 input_df[!, :DVF_env] = fill("conda_DVF", nrow(input_df))
 input_df[!, :DVF_maxContigLen] = fill("2099000", nrow(input_df))
 input_df[!, :DVF_scoreTh] = fill("0.7", nrow(input_df))
-input_df[!, :DVF_pThreshold] = fill("0.01", nrow(input_df))
+input_df[!, :DVF_pThreshold] = fill("0.005", nrow(input_df))
 input_df[!, :DVF_p] = fill("path/to/DeepVirFinder/dvf.py", nrow(input_df))
 input_df[!, :DVF_sbatch_time] = fill("2-0", nrow(input_df))
 input_df[!, :DVF_cpus_per_task] = fill("15", nrow(input_df))
@@ -81,6 +82,11 @@ input_df[!, :phaTYP_sbatch_time] = fill("2-0", nrow(input_df))
 input_df[!, :phaTYP_cpus_per_task] = fill("2", nrow(input_df))
 input_df[!, :phaTYP_sbatch_mem] = fill("20G", nrow(input_df))  
 
+# geNomad Taxonomy
+input_df[!, :genomadtax_sbatch_time] = fill("2-0", nrow(input_df))
+input_df[!, :genomadtax_cpus_per_task] = fill("25", nrow(input_df))
+input_df[!, :genomadtax_sbatch_mem] = fill("20G", nrow(input_df))
+
 # Final thresholding related parameters for NON-INTEGRATED
 input_df[!, :NONInt_th_num_predictors_CheckV_NA] = fill("3", nrow(input_df))
 input_df[!, :NONInt_th_num_predictors_CheckV_AAIHighConf] = fill("1", nrow(input_df))
@@ -92,15 +98,15 @@ input_df[!, :NONInt_th_completeness_CheckV_HMM] = fill("10", nrow(input_df))
 input_df[!, :NONInt_th_num_predictors_CheckV_DTR_ITR_AAI] = fill("1", nrow(input_df))
 input_df[!, :NONInt_th_num_predictors_CheckV_DTR_ITR_HMM] = fill("1", nrow(input_df))
 
-
 # Final thresholding related parameters for INTEGRATED
-input_df[!, :Int_th_num_predictors_CheckV_NA] = fill("3", nrow(input_df))
+input_df[!, :Int_th_num_predictors_CheckV_NA] = fill("2.5", nrow(input_df))
 input_df[!, :Int_th_num_predictors_CheckV_AAIHighConf] = fill("1", nrow(input_df))
 input_df[!, :Int_th_completeness_CheckV_AAIHighConf] = fill("30", nrow(input_df))
-input_df[!, :Int_th_num_predictors_CheckV_AAIMediumConf] = fill("2", nrow(input_df))
+input_df[!, :Int_th_num_predictors_CheckV_AAIMediumConf] = fill("1.5", nrow(input_df))
 input_df[!, :Int_th_completeness_CheckV_AAIMediumConf] = fill("10", nrow(input_df))
-input_df[!, :Int_th_num_predictors_CheckV_HMM] = fill("2", nrow(input_df))
+input_df[!, :Int_th_num_predictors_CheckV_HMM] = fill("1.5", nrow(input_df))
 input_df[!, :Int_th_completeness_CheckV_HMM] = fill("10", nrow(input_df))
+
 
 
 out_p = "/data3/CLM_projs/TEST_Workflows/inDoViP/inrefs_params_test.tsv"#"path/to/output_inrefs_params.tsv"

@@ -42,6 +42,11 @@
   * value is Integer (minimum 1000)
   * default value is 1000
 
+#### `merge_circ_proph`
+  * if `true`, the two parts of prophages that wrap around circular contigs will be merged into one sequence
+  * possible values: 'true' (default) or 'false'
+  * default is 'true'
+
 ## ARGUMENTS FOR INITIAL PREDICTION STEPS
 
 ### geNomad options
@@ -391,8 +396,23 @@ The PhaTYP predictions will be incorporated in the final virus contig tables.
   * this parameter will be further transmitted to sbatch
   * mandatory parameter when running on HPC, no default is given 
 
+### GeNomad for taxonomy arguments
+#### `genomadtax_sbatch_time`
+  * maximum time that a sbatch job running geNomad for taxonomy (in slurm) is allowed to run
+  * this parameter will be further transmited to sbatch
+  * mandatory parameter when running on HPC, no default is given
+#### `genomadtax_cpus_per_task`
+  * the maximum number of CPUs in which geNomad for taxonomy should be run (either on a local server or on HPC)
+  * when running on an HPC, this parameter will be further transmitted to sbatch
+  * value is Integer
+  * default is 20 
+#### `genomadtax_sbatch_mem`
+  * the maximum memory requirements if geNomad for taxonomy is run as an sbatch job
+  * this parameter will be further transmitted to sbatch
+  * mandatory parameter when running on HPC, no default is given 
+
 ## NON-INTEGRATED viruses branch: arguments to select final viral contigs
-At the end of the workflow DoViP keeps only the NON-INTEGRATED viral contigs that fulfill certain criteria. The selection depends on the method used by CheckV to estimate the viral contig completeness, on the value of the viral contig completeness, and on the number of initial predictors that outputted the respective viral contig. 
+At the end of the workflow DoViP keeps only the NON-INTEGRATED viral contigs that fulfill certain criteria. The selection depends on the method used by CheckV to estimate the viral contig completeness, on the value of the viral contig completeness, and on the initial predictor coverage value (average number of predictors at each base along the viral sequence) for the respective viral contig.  
 
 ### If CheckV could not estimate the completeness of the viral contigs:
   * it means that CheckV could not find similarities in its database
@@ -446,7 +466,7 @@ At the end of the workflow DoViP keeps only the NON-INTEGRATED viral contigs tha
   * default is 1
 
 ## INTEGRATED viruses branch: arguments to select final viral contigs
-At the end of the workflow DoViP keeps only the INTEGRATED viruses that fulfill certain criteria. The selection depends on the method used by CheckV to estimate the viral contig completeness, on the value of the viral contig completeness, and on the number of initial predictors that outputted the respective viral contig.   
+At the end of the workflow DoViP keeps only the INTEGRATED viruses that fulfill certain criteria. The selection depends on the method used by CheckV to estimate the viral contig completeness, on the value of the viral contig completeness, and on the initial predictor coverage value (average number of predictors at each base along the viral sequence) for the respective viral sequence.   
 
 ### If CheckV could not estimate the completeness of the viral contigs:
   * it means that CheckV could not find similarities in its database
@@ -455,7 +475,7 @@ At the end of the workflow DoViP keeps only the INTEGRATED viruses that fulfill 
 #### `Int_th_num_predictors_CheckV_NA`  
   * this parameter gives the minimum number of initial predictors necessary to keep a viral contig if completeness is NA
   * value is Integer
-  * default is 3
+  * default is 2.5
 
 ### If CheckV used AAIHighConf method to estimate the completeness of the viral contigs:
   * it means that it found related viruses in its database and it can estimate the completeness with high precision
@@ -474,7 +494,7 @@ At the end of the workflow DoViP keeps only the INTEGRATED viruses that fulfill 
 #### `Int_th_num_predictors_CheckV_AAIMediumConf`   
   * this parameter gives the minimum number of initial predictors necessary to keep a viral contig if the method for determining the completeness is AAIMediumConf
   * value is Integer
-  * default is 2    
+  * default is 1.5    
 #### `Int_th_completeness_CheckV_AAIMediumConf` 
   * this parameter gives the minimum completeness to keep a viral contig when the method for determining the completeness is AAIMediumConf
   * value is Float
@@ -485,7 +505,7 @@ At the end of the workflow DoViP keeps only the INTEGRATED viruses that fulfill 
 #### `Int_th_num_predictors_CheckV_HMM`
   * this parameter gives the minimum number of initial predictors necessary to keep a viral contig if the method for determining the completeness is HMM
   * value is Integer
-  * default is 2        
+  * default is 1.5        
 #### `Int_th_completeness_CheckV_HMM`
   * this parameter gives the minimum completeness to keep a viral contig when the method for determining the completeness is HMM
   * value is Float
