@@ -53,21 +53,7 @@ julia -e 'using Pkg; Pkg.activate("DoViP_App.jl"); Pkg.instantiate()'
 ```
 Instantiation is necessary to bring on your machine the packages on which DoViP depends. 
 
-!!! note
-    After successfull instantation Julia will atempt to start DoViP directly. Obviously, because the arguments are missing, it will give an error message:  " Aborting Program because the mandatory parameter 'projtype' is missing. Please make sure you input it correctly and try again. 
 
-    WARNING: --output requested, but no modules defined during run
-    lld: error: cannot open /home/cmoraru/miniconda3/envs/conda_DoViPv0.8/share/julia/compiled/v1.10/DoViP_App/jl_J195Bq: No such file or directory
-    ◓ DoViP_App
-    62 dependencies successfully precompiled in 56 seconds
-    1 dependency had output during precompilation:
-    ┌ DoViP_App
-    │  [Output was shown above]
-    └  ""
-
-    Ignore the message, it actually means that DoViP was successfully installed.
-
-    
 
 
 ### 5.Test installation
@@ -76,7 +62,7 @@ Instantiation is necessary to bring on your machine the packages on which DoViP 
 DoViP --help
 ```
 
-You should get the following message: "DoViP - a workflow for virus prediction in metagenomes."
+You should get the help for DoViP.  
 
 
 ## Variant 2: From a conda package

@@ -16,7 +16,7 @@ DoViP [...args]
 
 Alternatively, the `DoViP_App` module can be called directly, as exemplified below.  
 ```
-julia path/to/conda_DoViP/DoViP_App.jl/src/DoViP_App.jl [...args]
+julia path/to/conda_DoViP/DoViP_App.jl/src/DoViP_App_run.jl [...args]
 ```
 
 Calling directly the `DoViP_App.jl` module is required when using tools like `nice` (to set process priorities) and `taskset` (to confine the processes only to a selected CPU subset).  
@@ -30,7 +30,7 @@ nice -n 10 taskset -c 76-90 julia path/to/conda_DoViP/DoViP_App.jl/src/DoViP_App
 
 The parameters used by DoViP for each sample are saved in its corresponding subfolder in the file `project_parameters_and_status.txt`. Besides the parameters, in this file it is also saved a brief status report showing which individual steps should be run, have been finished or are currently running. However, the complete log for each DoViP step is sent to the standard output. To save it and potential errors to a file, use the code below:  
 ```
-nice -n 10 taskset -c 76-90 julia path/to/conda_DoViP/DoViP_App.jl/src/DoViP_App.jl [...args] > dovip_sample.log 2> dovip_sample.err 
+nice -n 10 taskset -c 76-90 julia path/to/conda_DoViP/DoViP_App.jl/src/DoViP_App_run.jl [...args] > dovip_sample.log 2> dovip_sample.err 
 ```
 !!! note
     If the project folder or individual sample subfolders already exist, for example from a previous DoViP run, and the DoViP is started with the parameter `continue=false`, the user will be asked at the standard output if the existent folders should be overwritten or not. This message will not be visible if the standard output is sent to a file.

@@ -1,1 +1,1 @@
-DoViP () { julia "$CONDA_PREFIX/DoViP_App.jl/src/DoViP_App.jl" "$@"; }
+DoViP () { julia "$CONDA_PREFIX/DoViP_App.jl/src/DoViP_App_run.jl" "$@"; }
