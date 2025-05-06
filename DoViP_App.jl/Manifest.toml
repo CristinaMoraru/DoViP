@@ -38,11 +38,11 @@ version = "0.1.5"
 
 [[deps.BioS_ExtTools]]
 deps = ["BioS_Gen", "BioS_ProjsWFs", "BioS_SeqFuns", "CSV", "DataFrames", "Statistics"]
-git-tree-sha1 = "38498fd6d6b79678a580d3083fa9c69c4c7427a4"
-repo-rev = "v0.4.6"
+git-tree-sha1 = "d89f36c6352f284af068f7fcd34a377a7a0be4dd"
+repo-rev = "v0.4.7"
 repo-url = "https://github.com/CristinaMoraru/BioS_ExtTools.jl"
 uuid = "2ab26461-0724-42ce-b75e-a46d47467e92"
-version = "0.4.6"
+version = "0.4.7"
 
 [[deps.BioS_Gen]]
 deps = ["DataFrames", "StringAlgorithms"]
@@ -146,11 +146,11 @@ uuid = "ade2ca70-3891-5945-98fb-dc099432e06a"
 
 [[deps.DoViP_Lib]]
 deps = ["BioS_ExtTools", "BioS_Gen", "BioS_ProjsWFs", "BioS_SeqFuns", "CSV", "DataFrames", "Revise", "Serialization", "Statistics"]
-git-tree-sha1 = "f4eaec3a9991a39469b315768f44cdc38a85b354"
-repo-rev = "v1.0.5"
+git-tree-sha1 = "fc4e7344ce55cbec220ea80464402aa67edd8039"
+repo-rev = "v1.0.6"
 repo-url = "https://github.com/CristinaMoraru/DoViP_Lib.jl"
 uuid = "22db7568-0fef-4816-86c4-f780d51317b9"
-version = "1.0.5"
+version = "1.0.6"
 
 [[deps.DocStringExtensions]]
 deps = ["LibGit2"]
