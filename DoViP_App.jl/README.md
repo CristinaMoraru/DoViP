@@ -1,4 +1,4 @@
-DoViP version 1.0.2.  
+DoViP version 1.2.2.  
 
 The parameters used by DoViP are detailed below. A complete description of the workflow can be found [here](https://cristinamoraru.github.io/DoViP/index.html).  
 
@@ -20,7 +20,7 @@ When running DoViP in multiworkflow mode, there are only four arguments that nee
   * value: path/to/parameter.tsv
   * it represents a .tsv file where each row represents a sample to be analysed by DoViP and each column represents one argument. 
   * this file should contain values for all arguments detailed in the `singleworkflow` page (see previous page), with the exception of `pd_prefix` (is is not needed, because it is replaced here by the `spd` argument)
-  * an example of this .tsv file can be downloaded from [here](https://cristinamoraru.github.io/DoViP/v1.0.0/helpers/inrefs_params.tsv). Alternatively, you can use for the generation of this input file a [template script using the Julia language](https://cristinamoraru.github.io/DoViP/v1.0.0/helpers/inrefs_params.tsv) or a [template script using the R language](https://cristinamoraru.github.io/DoViP/v1.0.0/helpers/prep_input.R).
+  * an example of this .tsv file can be downloaded from [here](https://cristinamoraru.github.io/DoViP/v1.2.0/helpers/inrefs_params.tsv). Alternatively, you can use for the generation of this input file a [template script using the Julia language](https://cristinamoraru.github.io/DoViP/v1.2.0/helpers/inrefs_params.tsv) or a [template script using the R language](https://cristinamoraru.github.io/DoViP/v1.2.0/helpers/prep_input.R).
   * mandatory parameter, no default is given
 
 #### `continue`
@@ -267,6 +267,33 @@ path/to/VirSorter2_output_folder/
   * this parameter will be further transmitted to sbatch
   * mandatory parameter when running on HPC, no default is given 
 
+### VirSorter options
+DoViP can accept VirSorter results calculated with independently from DoViP. To enable this option, the user needs to set the `virSorter_signal` parameter to 'use_external' and the `virSorter_res` parameter to the path where the VirSorter results are found.    
+
+#### `virSorter_signal`
+  * if VirSorter predictions should be considered
+
+  * possible values:
+    * 'dont' - don't run this predictor step. It can be used only if the project is new (continue = false), or, for continued projects, if there was a 'dont' or 'remove' signal in the previous step.
+    * 'use'- re-use predictor results calculated in previous runs of this project. It can't be used if the project is new (continue = false). For continued projects, it can be used only after 'do', 'use' or 'ignore' in the previous step, and, if their respective "progress" is finished.
+    * 'use_external' - use results calculated previously by the predictor independently from a DoViP project.
+    * 'ignore' - doesn't take into consideration existing results calculated in a previous run of this project. It can't be used if the project is new (continue = false). For continued projects, it can be used only after 'do', 'use' or 'ignore' in the previous step, and, if their respective "progress" is finished. 
+    * 'remove' - removes results calculated in a previous step. It can't be used if the project is new (continue = false). For continued projects, it can be used only after 'do', 'use' or ignore in the previous step, regardless of their "progress". 
+
+  * mandatory parameter, no default is given
+
+#### `virSorter_res`   
+  * `path/to/VirSorter`_output_folder when VirSorter results were calculated outside DoViP
+  * needed only if `virSorter_signal=use_external`
+  * the path should be the exact one that was given to the VirSorter command as output folder
+  * DoViP expects to find inside `path/to/VirSorter_output_folder` the following files:
+```plaintext
+path/to/VirSorter_output_folder/
+    ├── final-viral-score.tsv 
+    ├── final-viral-boundary.tsv
+```
+
+
 ### VIBRANT options
 If this this step is selected for running (`vibrant_signal=do`), the following will happen:  
   * DoViP will start a VIBRANT run in the conda environment given by the `vibrant_env` parameter, using the following command:
@@ -376,6 +403,46 @@ path/to/ViralVerify_output_folder/
   * the maximum memmory requirements if ViralVerify is run as an sbatch job
   * this parameter will be further transmitted to sbatch
   * mandatory parameter when running on HPC and ViralVerify signal is `do`, no default is given 
+
+### Jaeger options
+DoViP can accept Jaeger results calculated with independently from DoViP. To enable this option, the user needs to set the `jaeger_signal` parameter to 'use_external' and the `jaeger_res` parameter to the path where the Jaeger results are found.    
+
+#### `jaeger_signal`
+  * if Jaeger predictions should be considered
+
+  * possible values:
+    * 'dont' - don't run this predictor step. It can be used only if the project is new (continue = false), or, for continued projects, if there was a 'dont' or 'remove' signal in the previous step.
+    * 'use'- re-use predictor results calculated in previous runs of this project. It can't be used if the project is new (continue = false). For continued projects, it can be used only after 'do', 'use' or 'ignore' in the previous step, and, if their respective "progress" is finished.
+    * 'use_external' - use results calculated previously by the predictor independently from a DoViP project.
+    * 'ignore' - doesn't take into consideration existing results calculated in a previous run of this project. It can't be used if the project is new (continue = false). For continued projects, it can be used only after 'do', 'use' or 'ignore' in the previous step, and, if their respective "progress" is finished. 
+    * 'remove' - removes results calculated in a previous step. It can't be used if the project is new (continue = false). For continued projects, it can be used only after 'do', 'use' or ignore in the previous step, regardless of their "progress". 
+
+  * mandatory parameter, no default is given
+
+#### `jaeger_res`   
+  * `path/to/Jaeger`_output_folder when Jaeger results were calculated outside DoViP
+  * needed only if `jaeger_signal=use_external`
+  * the path should be the exact one that was given to the Jaeger command as output folder
+  * DoViP expects to find inside `path/to/Jaeger_output_folder` the following files:
+```plaintext
+path/to/Jaeger_output_folder/
+    ├── "$(sampleName)_default_jaeger.tsv"
+    ├── "$(sampleName)_default_prophages/prophages_jaeger.tsv"
+```
+#### `th_rc`
+   * corresponds to the `rc` parameter from Jaeger. It servers to filter the Jaeger output based on this parameter.  
+   * value type if Float
+   * default value is  0.4
+
+#### `th_pc`
+   * corresponds to the `pc` parameter from Jaeger. It servers to filter the Jaeger output based on this parameter.  
+   * value type if Float
+   * default value is  1.5
+
+#### `th_entropy`
+    * it is used to filter jaeger output based on the `entropy` column
+    * value type if Float (min 0, max 2.5)
+    * default value is  0.4
 
 ## ARGUMENTS FOR CONSENSUS PREDICTION STEPS
 ### CheckV arguments
@@ -553,5 +620,4 @@ At the end of the workflow DoViP keeps only the INTEGRATED viruses that fulfill 
   * this parameter gives the minimum completeness to keep a viral contig when the method for determining the completeness is HMM
   * value is Float
   * default is 10.0
-
 
