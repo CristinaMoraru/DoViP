@@ -1,7 +1,7 @@
 library(tidyverse)
 
 # Define the path to the input TSV file containing FASTA paths
-input_file_path <- "~/SCIENCE/PROJECTS/+test/DoViP/inrefs.tsv"  # This file should have only one column, named 'inref'
+input_file_path <- "path/to/file_with_input_fasta_paths.tsv"   # This file should have only one column, named 'inref'
 
 # Read the TSV file into a tibble
 input_df <- read.csv(file = input_file_path, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
@@ -10,7 +10,7 @@ input_df <- read.csv(file = input_file_path, header = TRUE, sep = "\t", stringsA
 input_df <- input_df %>%
   mutate(
     projtype = "singleworkflow",
-    sample_set = "TEST_set",
+    sample_set = "TEST_set",   # the name of the metagenome set you are analysing
     use_slurm = "false",
     continue = "false",
     stop_after_initial_predictors = "false",
@@ -59,6 +59,13 @@ input_df <- input_df %>%
     virSorter2_sbatch_mem = "20G"
   )
 
+# VirSorter-related parameters
+input_df <- input_df %>%
+  mutate(
+    virSorter_signal = "use_external",
+    virSorter_res = "/path/to/previous/results"
+  )
+
 # VIBRANT-related parameters
 input_df <- input_df %>%
   mutate(
@@ -84,6 +91,16 @@ input_df <- input_df %>%
   viralVerify_sbatch_time ="2-0",
   viralVerify_cpus_per_task ="25",
   viralVerify_sbatch_mem ="20G"
+  )
+
+# Jaeger-related parameters
+input_df <- input_df %>%
+  mutate(
+    jaeger_signal = "use_external",
+    jaeger_res = "/path/to/previous/results",
+    th_rc = "0.4",
+    th_pc = "1.5",
+    th_entropy = "0.4"
   )
   
 # CheckV-related parameters
@@ -144,5 +161,5 @@ input_df <- input_df %>%
 
 
 # Write the data frame to a TSV file
-out_p <- "~/SCIENCE/PROJECTS/+test/DoViP/output_inrefs_params.tsv"
+out_p <- "path/to/output_inrefs_params.tsv"
 write_tsv(input_df, out_p)

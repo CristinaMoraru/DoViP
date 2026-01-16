@@ -1,12 +1,12 @@
 using CSV
 using DataFrames
 
-input_file_path = "/data3/CLM_projs/TEST_Workflows/inDoViP/inrefs.tsv" #"path/to/file_with_input_fasta_paths.tsv"        # this file should have only one column, named 'inref'
+input_file_path = "path/to/file_with_input_fasta_paths.tsv"        # this file should have only one column, named 'inref'
 input_df = CSV.read(input_file_path, DataFrame; delim='\t', header=true)
 
 # project related parameters
 input_df[!, :projtype] = fill("singleworkflow", nrow(input_df))
-input_df[!, :sample_set] = fill("TEST_set", nrow(input_df))
+input_df[!, :sample_set] = fill("TEST_set", nrow(input_df)) # the name of the metagenome set you are analysing
 input_df[!, :use_slurm] = fill("false", nrow(input_df))
 input_df[!, :continue] = fill("false", nrow(input_df))
 input_df[!, :stop_after_initial_predictors] = fill("false", nrow(input_df))
@@ -45,6 +45,10 @@ input_df[!, :virSorter2_sbatch_time] = fill("4-0", nrow(input_df))
 input_df[!, :virSorter2_cpus_per_task] = fill("25", nrow(input_df))
 input_df[!, :virSorter2_sbatch_mem] = fill("20G", nrow(input_df))
 
+# virSorter related parameters
+input_df[!, :virSorter_signal] = fill("use_external", nrow(input_df))
+input_df[!, :virSorter_res] = fill("/path/to/previous/results", nrow(input_df)) 
+
 # VIBRANT related parameters
 input_df[!, :vibrant_signal] = fill("do", nrow(input_df))
 input_df[!, :vibrant_res] = fill("/path/to/previous/results", nrow(input_df)) 
@@ -65,6 +69,13 @@ input_df[!, :viralVerfify_threshold] = fill("7", nrow(input_df))
 input_df[!, :viralVerify_sbatch_time] = fill("2-0", nrow(input_df))
 input_df[!, :viralVerify_cpus_per_task] = fill("25", nrow(input_df))
 input_df[!, :viralVerify_sbatch_mem] = fill("20G", nrow(input_df))
+
+# Jaeger related parameters
+input_df[!, :jaeger_signal] = fill("use_external", nrow(input_df))
+input_df[!, :jaeger_res] = fill("/path/to/previous/results", nrow(input_df))
+input_df[!, :th_rc] = fill("0.4", nrow(input_df)) 
+input_df[!, :th_pc] = fill("1.5", nrow(input_df)) 
+input_df[!, :th_entropy] = fill("0.4", nrow(input_df)) 
 
 #checkV related parameters
 input_df[!, :checkv_env] = fill("conda_checkV", nrow(input_df))
@@ -109,7 +120,7 @@ input_df[!, :Int_th_completeness_CheckV_HMM] = fill("10", nrow(input_df))
 
 
 
-out_p = "/data3/CLM_projs/TEST_Workflows/inDoViP/inrefs_params_test.tsv"#"path/to/output_inrefs_params.tsv"
+out_p = "path/to/output_inrefs_params.tsv"
 CSV.write(out_p, input_df, delim='\t', header=true)
 
 
